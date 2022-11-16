@@ -1,0 +1,5 @@
+/.venv
+/.idea
+/.vscode
+
+/backend/db.sqlite3
