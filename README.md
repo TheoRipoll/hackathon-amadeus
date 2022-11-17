@@ -37,7 +37,7 @@ activate virtualenv:
 
     python manage.py migrate
 
-## step 4 - Run Server
+## step 6 - Run Server
 
     cd backend
 
