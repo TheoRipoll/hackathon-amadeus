@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView
 
 from main.views import LoginView, RegisterView, PlaceDetailView, PlaceView, SearchResultsView
 
-
+# A list of url patterns.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='main/index.html'), name='home'),

@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django import forms
 
 
+# Creating a form that allows the user to register.
 class RegisterForm(UserCreationForm):
     class Meta:
         model = get_user_model()
@@ -11,5 +12,6 @@ class RegisterForm(UserCreationForm):
                   'password1': 'Password', 'password2': 'Confirm Password'}
 
 
+# A form that allows the user to login.
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Email / Username')
