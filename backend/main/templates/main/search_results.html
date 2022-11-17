@@ -17,19 +17,19 @@
 
 <!-- ===========Start Content=========== -->
 {% block content %}
-<section>
-    <div>
-        <h1>Hackathon Amadeus</h1>
-    </div>
 
+<h1>Search Results</h1>
 
-    <form action="{% url 'search_results' %}" method="get">
-        <input name="q" type="text" placeholder="Search...">
-        <input type="submit" value="Search">
-    </form>
-
-    </div>
-</section>
+<ul>
+    {% for obj in object_list %}
+    <li>
+        {{ obj.name }}, {{ obj.description }}
+    </li>
+    {% empty %}
+    <li>No results found</li>
+    {% endfor %}
+    {% endif %}
+</ul>
 
 
 {% endblock %}<!-- ===========	End Content
