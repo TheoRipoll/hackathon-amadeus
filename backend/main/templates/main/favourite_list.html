@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ==========Start SEO blocks=========== -->
+{% block title %}Recherche{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ==========END SEO blocks=========== -->
+
+<!-- ==========Start CSS blocks=========== -->
+{% block extend_header %}{% endblock %}
+<!-- ==========END CSS blocks=========== -->
+
+<!-- ==========Start script blocks=========== -->
+{% block extend_footer %}{% endblock %}
+<!-- ==========END script blocks=========== -->
+
+<!-- ==========Start Content=========== -->
+{% block content %}
+{% if user.is_authenticated %}
+<div class="lightBg">
+    <div class="container">
+        <div class="placesContentMain">
+            <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
+                {% for place in user.favourites.all %}
+                <div class="col-md-6 pColMain">
+                    <div class="pCol">
+                        <div class="post">
+                            <h1> {{ place.name }}</h1>
+                            <h3>{{ place.description }}</h3>
+                            <p>{{ place.address }}</p>
+                            <p>{{ place.url }}</p>
+                            {% if request.user in place.favourites.all %}
+                            <a href="{% url 'remove_place' place.pk %}"> remove </a>
+                            {% else %}
+                            <a href="{% url 'add_place' place.pk %}"> add </a>
+                            {% endif %}
+                        </div>
+                        <div class="image">
+                            <img src="{{ place.images }}" class="center"/>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <h1>No favoutites places</h1>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<h1>Il faut etre connecté pour pouvoir avoir des favoris !</h1>
+{% endif %}
+<!-- ==========End Content=========== -->
+{% endblock %}
+
