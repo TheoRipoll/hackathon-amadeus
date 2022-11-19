@@ -17,6 +17,7 @@
                                 <li><a href="{%url 'home'%}">Home</a></li>
                                 <li>User: {{ user.username }}</li>
                                 <li>last: {{ user.email }}</li>
+                                <li><a href="{%url 'favourite_list'%}">Favorites</a></li>
                                 <li>
                                     <a href="{% url 'logout' %}?next={{ request.path }}"
                                     >Logout</a

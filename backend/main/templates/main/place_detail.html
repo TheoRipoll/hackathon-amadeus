@@ -2,7 +2,7 @@
 {% load static %}
 
 <!-- ===========Start SEO blocks=========== -->
-{% block title %}{% endblock %}
+{% block title %}Lieu{% endblock %}
 {% block decription %}{% endblock %}
 {% block keywords %}{% endblock %}
 <!-- ===========END SEO blocks=========== -->
@@ -27,6 +27,11 @@
                 <h3>{{ place.description }}</h3>
                 <p>{{ place.address }}</p>
                 <p>{{ place.url }}</p>
+                {% if request.user in place.favourites.all %}
+                <a href="{% url 'remove_place' place.pk %}"> remove </a>
+                {% else %}
+                <a href="{% url 'add_place' place.pk %}"> add </a>
+                {% endif %}
             </div>
             <div class="image">
                 <img src="{{ place.images }}" class="center"/>

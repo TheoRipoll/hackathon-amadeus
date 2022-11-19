@@ -2,7 +2,7 @@
 {% load static %}
 
 <!-- ===========Start SEO blocks=========== -->
-{% block title %}Accueil{% endblock %}
+{% block title %}Recherche{% endblock %}
 {% block decription %}{% endblock %}
 {% block keywords %}{% endblock %}
 <!-- ===========END SEO blocks=========== -->
@@ -20,16 +20,28 @@
 
 <h1>Search Results</h1>
 
-<ul>
-    {% for obj in object_list %}
-    <li>
-        {{ obj.name }}, {{ obj.description }}
-    </li>
-    {% empty %}
-    <li>No results found</li>
-    {% endfor %}
-    {% endif %}
-</ul>
+<div class="lightBg">
+    <div class="container">
+        <div class="placesContentMain">
+            <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
+                {% for obj in object_list %}
+                <div class="col-md-6 pColMain">
+                    <div class="pCol">
+                        <a href="{% url 'place_detail' slug=obj.slug %}">
+                            <div class="pContent">
+                                <h3 class="mdTitle">{{ obj.name }}</h3>
+                                <p>{{ obj.address }}</p>
+                                <p>{{ obj.url }}</p>
+                                <p>{{ obj.description }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}<!-- ===========	End Content
